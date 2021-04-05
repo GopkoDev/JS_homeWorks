@@ -13,21 +13,20 @@ console.log("Thaks you for looking my home work) My white niiga<3 "); */
 
 let money = 54000;
 let income = "фриланс";
-let eddExpenses = "Интернет, Такси, Комуналка";
+let addExpenses = "Интернет, Такси, Комуналка";
 let deposit = true;
 let mission = 100100;
 let period = 2;
 
-console.log('money:', typeof money);
-console.log('income:', typeof income);
-console.log('deposite:', typeof deposite);
+console.log(typeof money);
+console.log(typeof income);
+console.log(typeof deposite);
 
-console.log('Длина строки eddExpenses:', eddExpenses.length);
+console.log(addExpenses.length);
 
 console.log('Период равен', period, 'месяцев' );
 console.log('Цель зароботать', mission, 'гривен');
-console.log(eddExpenses.toLowerCase());
-console.log(eddExpenses.split(', '));
+console.log(addExpenses.toLowerCase().split(', '));
 
 let budgetDay = money/30;
 console.log('Дневной бюджет:', budgetDay);
