@@ -74,5 +74,5 @@ console.log(getTargetMonth(mission, accumulatedMonth));
 
 budgetDay = accumulatedMonth / 30;
 console.log(budgetDay);
-console.log(addExpenses.split());
+console.log(addExpenses.split(', '));
 
