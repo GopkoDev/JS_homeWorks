@@ -1,44 +1,45 @@
 "use strict";
+let money;
 
 let isNumber = function(n){
     return !isNaN(parseFloat(n)) && isFinite(n)
 };
 
-let money;
-let income = "фриланс";
-let addExpenses = "Интернет, Такси, Комуналка";
-let deposit = true;
-let mission = 100100;
-let period = 2;
-let budgetDay;
-
-
-/* let start = function(){
-    while(!isNumber(money)){
-        money = prompt('Ваш месячный доход');
-    };
-};
-start(); */
-
 let start = function(){ 
     do {
         money = prompt('Ваш месячный доход');
     } 
-    while (!isNumber(money));
+    while (!isNumber(money))
 };
+
 start();
 
-addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-console.log(addExpenses.split(', '));
-deposit = confirm('Есть ли у вас депозит в банке?');
+let appData = {
+    icome: {},
+    addIncome: [],
+    expenses: {},
+    addExpenses: [],
+    deposit: false,
+    mission: 50000,
+    period: 3,
+    asking: function(){
+        let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
+            appData.addExpenses.toLowerCase().split(', ');
+            appData.deposit = confirm('Есть ли у вас депозит в банке?');
+    }
+}
+
+
+
 
 
 let showTypeOf = function(data){
     console.log(data, typeof(data));
 };
+
 showTypeOf(money);
-showTypeOf(income);
-showTypeOf(deposit);
+showTypeOf(appData.income);
+showTypeOf(appData.deposit);
 
 
 let expenses = [];
@@ -70,13 +71,13 @@ let accumulatedMonth = getAccumulatedMonth(money, expensesAmount);
 
 
 function getTargetMonth(mission, accumulatedMonth){
-    mission /= accumulatedMonth;
+    appData.mission /= accumulatedMonth;
     if(mission < 0) return  ('Цель не будет достигнута ');
     if(mission >= 0) return  ('Цель будет достигнута через ' + mission);
 };
 
 
-budgetDay = accumulatedMonth / 30;
+let budgetDay = accumulatedMonth / 30;
 let getStatusIncome = function(){
     if (budgetDay >= 1200) return('У вас высокий уровень дохода');
     if (budgetDay >= 600 && budgetDay < 1200) return('У вас средний уровень дохода');
@@ -86,6 +87,6 @@ let getStatusIncome = function(){
 console.log(getStatusIncome());
 
 
-console.log(getTargetMonth(mission, accumulatedMonth));
+console.log(getTargetMonth(appData.mission, accumulatedMonth));
 console.log('Бюджет на день: ' + budgetDay);
 
