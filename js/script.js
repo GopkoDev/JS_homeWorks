@@ -6,11 +6,10 @@ let isNumber = function (n) {
 };
 
 let capitalize = function (string) {
-    //return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
     return (string = string.replace(/(?:^\s*|\s+)(\S?)/g, (a, string) =>
         string.toUpperCase()
     ));
-};
+}; // Copy from web, not my code. I don't know how it work, but it work ))
 
 let start = function () {
     do {
@@ -18,7 +17,7 @@ let start = function () {
     } while (!isNumber(money));
 };
 
-start();
+/* start();
 
 let appData = {
     income: {},
@@ -39,9 +38,7 @@ let appData = {
                     "Таксую"
                 );
             } while (
-                isNumber(itemIncome) ||
-                itemIncome === "" ||
-                itemIncome === null
+                isNumber(itemIncome) ||itemIncome === "" ||itemIncome === null
             );
 
             let cashIncome = 0;
@@ -51,9 +48,7 @@ let appData = {
                     10000
                 );
             } while (
-                !isNumber(cashIncome) ||
-                cashIncome === "" ||
-                cashIncome === 0
+                !isNumber(cashIncome) ||cashIncome === "" ||cashIncome === 0
             );
 
             appData.income[itemIncome] = cashIncome;
@@ -65,9 +60,7 @@ let appData = {
                 "Перечислите возможные расходы за рассчитываемый период через запятую"
             );
         } while (
-            isNumber(addExpenses) ||
-            addExpenses === "" ||
-            addExpenses === null
+            isNumber(addExpenses) ||addExpenses === "" ||addExpenses === null
         );
 
         appData.addExpenses = addExpenses.toLowerCase().split(", ");
@@ -126,8 +119,7 @@ let appData = {
                     "10"
                 );
             } while (
-                !isNumber(appData.percentDeposit) ||
-                appData.percentDeposit === "" ||
+                !isNumber(appData.percentDeposit) ||appData.percentDeposit === "" ||
                 appData.percentDeposit === 0
             );
             do {
@@ -159,3 +151,21 @@ console.log(appData.getStatusIncome());
 
 appData.calcSavedMoney();
 console.log(capitalize(appData.addExpenses.join(", ")));
+ */
+
+let calculateButton = document.getElementById("start"); // a
+let btnPlusIncome = document.getElementsByClassName("income_add")[0]; //b 
+let btnPlusExpenses = document.getElementsByClassName("expenses_add")[0]; //b
+let checkbox = document.querySelector('#deposit-check'); // c
+let areaAdditionalIncome = document.querySelectorAll('.additional_income-item'); //d
+let rightPart = document.getElementsByClassName('result-total'); //e
+
+let salaryAmount = document.querySelector('.salary-amount'); // f
+let areaExpensesName = document.querySelectorAll('.expenses-title')[1]; //f
+let areaExpensesSum = document.querySelector('.expenses-amount'); //f
+let areaIncomeTitle = document.querySelectorAll('.income-title')[1];  // f
+let areaIncomeAmount = document.querySelector('.income-amount'); //f
+let areaAdditionalExpenses = document.querySelector('.additional_expenses-item') //f
+let areaTargetAmount = document.querySelector('.target-amount') //f
+let range = document.querySelector('.period-select') //f
+console.log(areaIncomeTitle)
