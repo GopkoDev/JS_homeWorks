@@ -40,7 +40,7 @@ let appData = {
                 );
             } while (
                 isNumber(itemIncome) ||
-                itemIncome === "" ||
+                itemIncome.trim() === "" ||
                 itemIncome === null
             );
 
@@ -66,7 +66,7 @@ let appData = {
             );
         } while (
             isNumber(addExpenses) ||
-            addExpenses === "" ||
+            addExpenses.trim() === "" ||
             addExpenses === null
         );
 
@@ -80,7 +80,7 @@ let appData = {
                 question = prompt("Введите обязательную статью расходов?");
             } while (
                 isNumber(question) ||
-                question === "" ||
+                question.trim() === "" ||
                 question === null
             );
             do {
