@@ -153,12 +153,22 @@ appData.calcSavedMoney();
 console.log(capitalize(appData.addExpenses.join(", ")));
  */
 
-let calculateButton = document.getElementById("start"); // a
-let btnPlusIncome = document.getElementsByClassName("income_add")[0]; //b 
-let btnPlusExpenses = document.getElementsByClassName("expenses_add")[0]; //b
+let calculateButton = document.getElementById('start'); // a
+let btnPlusIncome = document.getElementsByTagName('button')[0] //b 
+let btnPlusExpenses = document.getElementsByTagName('button')[1]; //b
 let checkbox = document.querySelector('#deposit-check'); // c
 let areaAdditionalIncome = document.querySelectorAll('.additional_income-item'); //d
-let rightPart = document.getElementsByClassName('result-total'); //e
+
+// e
+// let rightPart = document.getElementsByClassName('result-total'); 
+// console.log(rightPart)
+let budgetMonth = document.getElementsByClassName('result-total')[0];
+let budgetDay = document.getElementsByClassName('result-total')[1];
+let expensesMonth = document.getElementsByClassName('result-total')[2];
+let additionalIncome = document.getElementsByClassName('result-total')[3];
+let additionalExpenses = document.getElementsByClassName('result-total')[4];
+let incomePeriod = document.getElementsByClassName('result-total')[5];
+let target_month = document.getElementsByClassName('result-total')[6];
 
 let salaryAmount = document.querySelector('.salary-amount'); // f
 let areaExpensesName = document.querySelectorAll('.expenses-title')[1]; //f
@@ -168,4 +178,3 @@ let areaIncomeAmount = document.querySelector('.income-amount'); //f
 let areaAdditionalExpenses = document.querySelector('.additional_expenses-item') //f
 let areaTargetAmount = document.querySelector('.target-amount') //f
 let range = document.querySelector('.period-select') //f
-console.log(areaIncomeTitle)
