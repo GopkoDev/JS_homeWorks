@@ -94,25 +94,20 @@ let appData = {
         });
     },
     getIncome: function () {
-        if (confirm("Есть ли у вас дополнительный источник зароботка?")) {
-            let itemIncome = 0;
-            do {
-                itemIncome = prompt("Какой у вас дполнительный зароботок?","Таксую");
-            } while (
-                isNumber(itemIncome) ||itemIncome === "" ||itemIncome === null
-            );
-
-            let cashIncome = 0;
-            do {cashIncome = +prompt("Сколько в месяц зарабатываете на етом?", 10000);
-            } while (!isNumber(cashIncome) || cashIncome === "" || cashIncome === 0);
-            appData.income[itemIncome] = cashIncome;
-        }
-
-        for (let key in appData.income){
-            appData.incomeMonth += +appData.income[key]
-        }
+        incomeItem.forEach(function(item) {
+            let itemIncome = item.querySelector('.incomeTitle').value;
+            let cashIncome = item.querySelector('.income-amount').value;
+            if (itemIncome !== '' && cashIncome !== ''){
+                appData.income[itemIncome] = cashIncome;
+            }
+            for (let key in appData.income){
+                appData.incomeMonth += +appData.income[key]
+            }
+            
+        });
         
     },
+        
     getAddExpensess: function(){
         let addExpenses = additionalExpensesItems.value.split(',');
         addExpenses.forEach(function(item) {
