@@ -96,22 +96,30 @@ let appData = {
         });
     },
 
-    
+    addIncomeBlock: function () {
+        let cloneIncomItem = incomeItem[0].cloneNode(true);
+        incomeItem[0].parentNode.insertBefore(cloneIncomItem, incomePlus)
+        incomeItem = document.querySelectorAll('.income-items');
+        if (incomeItem.length === 3) {
+            incomePlus.style.display = 'none'
+        }
+    },
+
 
     getIncome: function () {
         incomeItem.forEach(function(item) {
             let itemIncome = item.querySelector('.income-title').value;
             let cashIncome = item.querySelector('.income-amount').value;
+            
             if (itemIncome !== '' && cashIncome !== ''){
                 appData.income[itemIncome] = cashIncome;
-
              }
-            for (let key in appData.income){
-                appData.incomeMonth += +appData.income[key]
-            }
-            
         });
         
+        for (let key in appData.income){
+            appData.incomeMonth += +appData.income[key]
+            console.log(key);
+        };
     },
         
     getAddExpensess: function(){
@@ -188,8 +196,9 @@ let appData = {
 
 // console.log(capitalize(appData.addExpenses.join(", ")));
 
-start.addEventListener("click", appData.start);
-expensesPlus.addEventListener("click", appData.addExpensesBlock);
+start.addEventListener('click', appData.start);
+expensesPlus.addEventListener('click', appData.addExpensesBlock);
+incomePlus.addEventListener('click', appData.addIncomeBlock);
 
 
 
