@@ -16,7 +16,7 @@ let additionalIncomeValue = document.getElementsByClassName('result-total')[3]; 
 let additionalExpensesValue = document.getElementsByClassName('result-total')[4]; //
 let incomePeriodValue = document.getElementsByClassName('result-total')[5]; //
 let targetMonthValue = document.getElementsByClassName('result-total')[6]; //
-    console.log(targetMonthValue)
+
 let salaryAmount = document.querySelector('.salary-amount'); //
 let expensesTitle = document.querySelectorAll('.expenses-title')[1]; //
 let expensesItems = document.querySelectorAll('.expenses-items');
@@ -25,7 +25,9 @@ let incomeAmount = document.querySelector('.income-amount'); //
 let additionalExpensesItems = document.querySelector('.additional_expenses-item'); //
 let targetAmount = document.querySelector('.target-amount');
 let periodSelect = document.querySelector('.period-select'); //
-let incomeItem = document.querySelectorAll('.incomeItems');
+let incomeItem = document.querySelectorAll('.income-items');
+
+
 
 let isNumber = function (n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
@@ -93,13 +95,17 @@ let appData = {
             }
         });
     },
+
+    
+
     getIncome: function () {
         incomeItem.forEach(function(item) {
-            let itemIncome = item.querySelector('.incomeTitle').value;
+            let itemIncome = item.querySelector('.income-title').value;
             let cashIncome = item.querySelector('.income-amount').value;
             if (itemIncome !== '' && cashIncome !== ''){
                 appData.income[itemIncome] = cashIncome;
-            }
+
+             }
             for (let key in appData.income){
                 appData.incomeMonth += +appData.income[key]
             }
@@ -126,11 +132,6 @@ let appData = {
         })
     },
 
-    // asking: function () {
-        
-    //     appData.deposit = confirm("Есть ли у вас депозит в банке?");
-    //     appData.getInfoDeposit();
-    // },
     getExpensesMonth: function () {
         let sum = 0;
         for (let key in appData.expenses) {
@@ -185,7 +186,16 @@ let appData = {
 //console.log(appData.getTargetMonth());
 
 
-console.log(capitalize(appData.addExpenses.join(", ")));
+// console.log(capitalize(appData.addExpenses.join(", ")));
 
 start.addEventListener("click", appData.start);
 expensesPlus.addEventListener("click", appData.addExpensesBlock);
+
+
+
+
+    // asking: function () {
+        
+    //     appData.deposit = confirm("Есть ли у вас депозит в банке?");
+    //     appData.getInfoDeposit();
+    // },
