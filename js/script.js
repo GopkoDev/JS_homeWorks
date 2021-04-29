@@ -25,6 +25,7 @@ let incomeAmount = document.querySelector('.income-amount'); //
 let additionalExpensesItems = document.querySelector('.additional_expenses-item'); //
 let targetAmount = document.querySelector('.target-amount');
 let periodSelect = document.querySelector('.period-select'); //
+let periodAmount = document.querySelector('.period-amount');//class="title period-amount"
 let incomeItem = document.querySelectorAll('.income-items');
 
 
@@ -52,11 +53,10 @@ let appData = {
     deposit: false,
     percentDeposit: 0,
     moneyDeposit: 0,
+    validator: function () {
+        if (isNumber(salaryAmount.value) ) appData.start();
+    },
     start: function () {
-        if (salaryAmount.value === "") {
-            alert('Ошибка, поле "Месячный доход" должно быть заполнено');
-            return;
-        }
         appData.budget = +salaryAmount.value;
         appData.getExpenses();
         appData.getIncome();
@@ -70,12 +70,15 @@ let appData = {
     },
     showResult() {
         budgetMonthValue.value = appData.budgetMonth;
-        budgetDayValue.value = appData.budgetDay;
+        budgetDayValue.value = Math.round(appData.budgetDay);
         expensesMonthValue.value = appData.expensesMonth;
         additionalExpensesValue.value =appData.addExpenses.join(', ');
         additionalIncomeValue.value = appData.addIncome.join(', ');
         targetMonthValue.value = Math.ceil(appData.getTargetMonth());
         incomePeriodValue.value = appData.calcPeriod();
+        periodSelect.addEventListener('input', appData.showResult)
+
+        
 
     },
     addExpensesBlock: function () {
@@ -186,6 +189,11 @@ let appData = {
             );
         }
     },
+
+    getRange: function(){
+        periodAmount.textContent = periodSelect.value
+    },
+
     calcPeriod: function () {
         return appData.budgetMonth * periodSelect.value;
     },
@@ -196,10 +204,10 @@ let appData = {
 
 // console.log(capitalize(appData.addExpenses.join(", ")));
 
-start.addEventListener('click', appData.start);
+start.addEventListener('click', appData.validator);
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
-
+periodSelect.addEventListener('input', appData.getRange)
 
 
 
@@ -208,3 +216,7 @@ incomePlus.addEventListener('click', appData.addIncomeBlock);
     //     appData.deposit = confirm("Есть ли у вас депозит в банке?");
     //     appData.getInfoDeposit();
     // },
+    
+   
+    
+    
