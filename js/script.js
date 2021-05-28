@@ -271,53 +271,48 @@ AppData.prototype.getRange = function () {
 AppData.prototype.calcPeriod = function () {
     return this.budgetMonth * periodSelect.value;
 };
+AppData.prototype.eventListeners = function() { 
+    start1.addEventListener('click', start);
+    cancel.addEventListener('click', appData.reset)
+    expensesPlus.addEventListener('click', appData.addExpensesBlock);
+    incomePlus.addEventListener('click', appData.addIncomeBlock);
+    periodSelect.addEventListener('input', appData.getRange);
+    incomeTitle.addEventListener('input', function(){
+        this.value = this.value.replace(paternName,'')
+    });
+    
+    additionalIncomeItem[0].addEventListener('input', function(){
+        this.value = this.value.replace(paternName,'')
+    });
+    
+    additionalIncomeItem[1].addEventListener('input', function(){
+        this.value = this.value.replace(paternName,'')
+    });
+    
+    expensesTitle.addEventListener('input', function(){
+        this.value = this.value.replace(paternName,'')
+    });
+    
+    salaryAmount.addEventListener('input', function(){
+        this.value = this.value.replace(paternNum,'')
+    });
+    
+    incomeAmount.addEventListener('input', function(){
+        this.value = this.value.replace(paternNum,'')
+    });
+    
+    expensesAmount.addEventListener('input', function(){
+        this.value = this.value.replace(paternNum,'')
+    });
+    
+    targetAmount.addEventListener('input', function(){
+        this.value = this.value.replace(paternNum,'')
+    });
+    
+};
 
 const appData = new AppData();
-
+const start = appData.start.bind(appData)
+appData.eventListeners();
 
 console.log(appData);
-
-
-
-
-const start = appData.start.bind(appData)
-
-start1.addEventListener('click', start);
-cancel.addEventListener('click', appData.reset)
-expensesPlus.addEventListener('click', appData.addExpensesBlock);
-incomePlus.addEventListener('click', appData.addIncomeBlock);
-periodSelect.addEventListener('input', appData.getRange);
-
-incomeTitle.addEventListener('input', function(){
-    this.value = this.value.replace(paternName,'')
-});
-
-additionalIncomeItem[0].addEventListener('input', function(){
-    this.value = this.value.replace(paternName,'')
-});
-
-additionalIncomeItem[1].addEventListener('input', function(){
-    this.value = this.value.replace(paternName,'')
-});
-
-expensesTitle.addEventListener('input', function(){
-    this.value = this.value.replace(paternName,'')
-});
-
-salaryAmount.addEventListener('input', function(){
-    this.value = this.value.replace(paternNum,'')
-});
-
-incomeAmount.addEventListener('input', function(){
-    this.value = this.value.replace(paternNum,'')
-});
-
-expensesAmount.addEventListener('input', function(){
-    this.value = this.value.replace(paternNum,'')
-});
-
-targetAmount.addEventListener('input', function(){
-    this.value = this.value.replace(paternNum,'')
-});
-
-
